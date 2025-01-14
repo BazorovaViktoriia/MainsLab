@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class AuthorizedTest extends Authorized {
 
     @Test
-    public void authorized() throws InterruptedException {
+    public void authorized() {
 
         new Authorized().login();
         Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),
