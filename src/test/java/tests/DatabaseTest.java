@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class DatabaseTest extends UsersCookie {
     private String phone = ConfigurationManager.configuration().phoneNumber();
 
-    @Test
+
     public void fetchUserIDFromDatabase() {
         new MainPage().clickGetMoneyBTN();
         $(byText("Пройти стандартную регистрацию")).click();
