@@ -64,5 +64,8 @@ public interface ConfigurationProperties extends Config {
     @Config.Key("db.password")
     String dbPassword();
 
+    @Config.Key("code")
+    String code();
+
 
 }

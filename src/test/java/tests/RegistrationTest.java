@@ -1,21 +1,22 @@
 package tests;
 
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import methods.Registration;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+
 public class RegistrationTest extends Registration {
 
     @Owner("Базорова Виктория")
     @Description("Проверка регистрации на сайте")
     @Test
-    public void RegPersonTest() throws InterruptedException  {
+    public void regPersonTest() throws InterruptedException {
         new Registration().regPerson();
 
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(), "https://shigapova.microklad.ru/registration/step4sbp",
-                "URL не соответствует ожидаемому");
+        Assert.assertTrue($(byText("Бонус за рекомендацию")).exists(), "Не произошел вход в ЛК");
     }
 }

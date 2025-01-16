@@ -23,7 +23,7 @@ public class Registration extends TestBase {
     private String passportDate = ConfigurationManager.configuration().passportDate();
     private String address = ConfigurationManager.configuration().address();
     private String bank = ConfigurationManager.configuration().bank();
-
+    private String code = ConfigurationManager.configuration().code();
 
     @Description("Проверка регистрации на сайте")
     public void regPerson() throws InterruptedException {
@@ -65,8 +65,11 @@ public class Registration extends TestBase {
 
         new Registration_step_4_sbp_Page()
                 .getAgreement()
-                .getUSerID();
-        //.getSms() //Добавить обработку смс
+                .getSms()
+                .puttSmsCode(code)
+                .getCredit();
+
+
         //.getCredit();
     }
 
