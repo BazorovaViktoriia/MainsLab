@@ -25,7 +25,7 @@ public class Registration extends TestBase {
     private String bank = ConfigurationManager.configuration().bank();
     private String code = ConfigurationManager.configuration().code();
 
-    @Description("Проверка регистрации на сайте")
+
     public void regPerson() throws InterruptedException {
         new MainPage().clickGetMoneyBTN();
         $(byText("Пройти стандартную регистрацию")).click();
@@ -68,31 +68,11 @@ public class Registration extends TestBase {
                 .getSms()
                 .puttSmsCode(code)
                 .getCredit();
-
-
-        //.getCredit();
     }
 
-        /*@Owner("Базорова Виктория")
-        @Description("Проверка авторизации на сайте с корректными логин и паролем")
-        @Test
-        public void authorizationPerson() throws Exception {
-            new MainPage().clickgetMoneyBTN();
 
-            Assert.assertEquals(ConfigurationManager.configuration().reg_type(),
-                    WebDriverRunner.getWebDriver().getCurrentUrl(),
-                    "URL не соответствует ожидаемому");
-
-            reg.clickRegistrationBTN();
-            Assert.assertEquals(ConfigurationManager.configuration().reg_step1(),
-                    WebDriverRunner.getWebDriver().getCurrentUrl(),
-                    "URL не соответствует ожидаемому");
-
-            step1.writePhone(phone)
-                    .writeEmail(mail)
-                    .writeSurname(surname)
-                    .writeName(name)
-                    .writePatronymic(patronymic);
-
-        } */
+    public void fastRegPerson() {
+        new MainPage().setTelephoneNumber(phone)
+                .setAgreement();
+    }
 }
