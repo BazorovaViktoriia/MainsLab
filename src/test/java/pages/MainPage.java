@@ -1,13 +1,16 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 /**
@@ -17,7 +20,6 @@ import static com.codeborne.selenide.Selenide.$;
  * С этой страницы используются локаторы для авторизации в ЛК и прохождения
  * краткой регистрации, анкеты-заявки
  * Проверка минимального и максимального значения в калькуляторе
- *
  */
 public class MainPage {
 
@@ -25,8 +27,8 @@ public class MainPage {
     private WebElement loginLK = $(byText("Войти в личный кабинет"));
     private TextInput telInput = new TextInput($(byId("anketaTelefonValue")));
     private WebElement acceptPersonalData = $(byId("chS"));
-    private WebElement sendTel = $(byClassName("btn btn-outline-secondary"));
-
+    private WebElement sendTel = $(byId("anketaTelefonBtn"));
+    SelenideElement slider = $(byId("sum_slider"));
 
     public void clickGetMoneyBTN() {
         getMoneyBTN.click();
@@ -60,4 +62,25 @@ public class MainPage {
         sendTel.click();
     }
 
+    @Step("Получаем текущее значение суммы займа")
+    public int checkSliderZaimValue() {
+        return Integer.parseInt(slider.getValue());
+    }
+
+    @Step("Получаем минимальное значение суммы займы")
+    public void checkMinZaimValue() {
+
+        int minValue = Integer.parseInt(slider.getAttribute("min"));
+        while (Integer.parseInt(slider.getValue()) > minValue) {
+            slider.sendKeys(Keys.ARROW_LEFT);
+        }
+    }
+
+    @Step("Получаем максимальное значение суммы займы")
+    public void checkMaxZaim() {
+        int maxValue = Integer.parseInt(slider.getAttribute("max"));
+        while (Integer.parseInt(slider.getValue()) < maxValue) {
+            slider.sendKeys(Keys.ARROW_RIGHT);
+        }
+    }
 }

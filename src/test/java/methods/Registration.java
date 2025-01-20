@@ -24,6 +24,7 @@ public class Registration extends TestBase {
     private String address = ConfigurationManager.configuration().address();
     private String bank = ConfigurationManager.configuration().bank();
     private String code = ConfigurationManager.configuration().code();
+    private String tel = ConfigurationManager.configuration().telephone();
 
 
     public void regPerson() throws InterruptedException {
@@ -74,5 +75,18 @@ public class Registration extends TestBase {
     public void fastRegPerson() {
         new MainPage().setTelephoneNumber(phone)
                 .setAgreement();
+    }
+
+    public void repeatFastRegPerson() {
+        new MainPage().setTelephoneNumber(tel)
+                .clickSendTelBTN();
+    }
+
+    public void checkMinData() {
+
+    }
+
+    public void checkMaxData() {
+
     }
 }

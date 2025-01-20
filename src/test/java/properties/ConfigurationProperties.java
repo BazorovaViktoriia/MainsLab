@@ -67,5 +67,15 @@ public interface ConfigurationProperties extends Config {
     @Config.Key("code")
     String code();
 
+    @Config.Key("minZaim")
+    String minZaim();
 
+    @Config.Key("maxZaim")
+    String maxZaim();
+
+    @Config.Key("minDataZaim")
+    String minDataZaim();
+
+    @Config.Key("maxDataZaim")
+    String maxDataZaim();
 }
