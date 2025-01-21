@@ -1,20 +1,19 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Registration_step_2_Page {
 
-    private TextInput surname = new TextInput($(By.id("field_surname")));
-    private TextInput name = new TextInput($(By.id("field_name")));
-    private TextInput patronymic = new TextInput($(By.id("field_patronymic")));
-    private TextInput birthday = new TextInput($(By.name("birthday")));
-    private TextInput birthPlace = new TextInput($(By.name("birth_place")));
-    private Button nextBTN = new Button($(byText("Продолжить")));
+    private final SelenideElement surname = $(By.id("field_surname"));
+    private final SelenideElement name = $(By.id("field_name"));
+    private final SelenideElement patronymic = $(By.id("field_patronymic"));
+    private final SelenideElement birthday = $(By.name("birthday"));
+    private final SelenideElement birthPlace = $(By.name("birth_place"));
+    private final SelenideElement nextBTN = $(byText("Продолжить"));
 
     public Registration_step_2_Page writeBirthday(String birthdayStr) {
         birthday.sendKeys(birthdayStr);

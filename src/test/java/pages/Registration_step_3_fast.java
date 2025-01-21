@@ -1,10 +1,9 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import java.io.File;
 
@@ -16,19 +15,20 @@ import static java.lang.Thread.sleep;
 public class Registration_step_3_fast {
     private SelenideElement firstPhoto = $(By.xpath("//*[@id=\"photos\"]/div[2]/div[1]/form/div/input"));
     private SelenideElement secondPhoto = $(By.xpath("//*[@id=\"photos\"]/div[2]/div[3]/form/div/input"));
-    private Button nextBTN = new Button($(byText("Продолжить")));
-    private Button bankAccount = new Button($(byId("sbp")));
-    private TextInput bankName = new TextInput($(byClassName("select2-search__field")));
+    private final SelenideElement nextBTN = $(byText("Продолжить"));
+    private final SelenideElement bankAccount = $(byId("sbp"));
+    private final SelenideElement bankName = $(byClassName("select2-search__field"));
 
     SelenideElement slider = $("#sum_slider");  // Локатор слайдера
-    int salaryValue = 20000;  // Значение, которое нужно установить
+    int salaryValue = 20000;
 
+    @Attachment
     public Registration_step_3_fast uploadFirstPhoto() {
         firstPhoto.uploadFile(new File("C:/Users/Виктория Базарова/Desktop/для теста.jpg")); // Загрузка файла
         return this;
     }
 
-
+    @Attachment
     public Registration_step_3_fast uploadSecondPhoto() {
         secondPhoto.uploadFile(new File("C:/Users/Виктория Базарова/Desktop/для теста.jpg")); // Загрузка файла
         return this;

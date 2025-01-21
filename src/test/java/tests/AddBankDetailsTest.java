@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 @Test
@@ -28,7 +29,7 @@ public class AddBankDetailsTest extends AddBankDetails {
     @Test(priority = 2)
     public void addBankCardTest() {
         addCard();
-        Assert.assertTrue($(byText(" Номер ")).exists(),"Не найдена строка для ввода номера банковской карты");
+        Assert.assertTrue($(byText("Добавить карту")).isDisplayed(),"Не найдена строка для ввода номера банковской карты");
 
     }
 }

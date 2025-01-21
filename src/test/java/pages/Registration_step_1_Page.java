@@ -1,8 +1,7 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -13,12 +12,12 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class Registration_step_1_Page {
 
-    private TextInput phone = new TextInput($(By.name("mobile_phone")));
-    private TextInput email = new TextInput($(By.name("email")));
+    private final SelenideElement phone = $(By.name("mobile_phone"));
+    private final SelenideElement email = $(By.name("email"));
 
-    private TextInput address = new TextInput($(By.id("address")));
+    private final SelenideElement address = $(By.id("address"));
 
-    private Button nextBTN = new Button($(byText("Продолжить")));
+    private final SelenideElement nextBTN = $(byText("Продолжить"));
 
     public Registration_step_1_Page writePhone(String phoneStr) {
         phone.sendKeys(phoneStr);

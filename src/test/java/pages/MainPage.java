@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
@@ -25,7 +24,7 @@ public class MainPage {
 
     private WebElement getMoneyBTN = $(By.xpath("/html/body/div[4]/div/section/div[2]/form/div/div[2]/button"));
     private WebElement loginLK = $(byText("Войти в личный кабинет"));
-    private TextInput telInput = new TextInput($(byId("anketaTelefonValue")));
+    private final SelenideElement telInput = $(byId("anketaTelefonValue"));
     private WebElement acceptPersonalData = $(byId("chS"));
     private WebElement sendTel = $(byId("anketaTelefonBtn"));
     SelenideElement slider = $(byId("sum_slider"));

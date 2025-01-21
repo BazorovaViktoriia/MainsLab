@@ -1,8 +1,8 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import methods.DataBaseHelper;
 import methods.UsersCookie;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import java.sql.ResultSet;
 
@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class Registration_step_4_sbp_Page {
 
-    private TextInput password = new TextInput($(byId("numberSms")));
+    private final SelenideElement password = $(byId("numberSms"));
 
 
     public Registration_step_4_sbp_Page getAgreement() {

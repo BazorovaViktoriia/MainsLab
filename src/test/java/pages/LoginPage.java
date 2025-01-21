@@ -1,17 +1,17 @@
 package pages;
 
 import io.qameta.allure.Step;
-import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.TextInput;
+
+import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class LoginPage {
-    TextInput tel = new TextInput($(byXpath("/html/body/div[4]/div/div[2]/div[2]/form/div/div[1]/input[1]")));
-    TextInput password = new TextInput($(byXpath("/html/body/div[4]/div/div[2]/div[2]/form/div/div[1]/input[2]")));
-    Button entryBtn = new Button($(byText("Войти")));
+    private final SelenideElement tel =  $(byXpath("/html/body/div[4]/div/div[2]/div[2]/form/div/div[1]/input[1]"));
+    private final SelenideElement password = $(byXpath("/html/body/div[4]/div/div[2]/div[2]/form/div/div[1]/input[2]"));
+    private final SelenideElement entryBtn = $(byText("Войти"));
 
     @Step("Вводим номер телефона")
     public LoginPage writeTel(String telephone) {

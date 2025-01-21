@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
 @Listeners(FailedWatcher.class)
 public class TestBase {
@@ -20,7 +21,7 @@ public class TestBase {
     @BeforeMethod
     public void createDriver() {
         WebDriverManager.chromedriver().setup();
-       // addListener("AllureSelenide", new AllureSelenide());
+        //addListener("AllureSelenide", new AllureSelenide());
 
         ChromeOptions options = new ChromeOptions();
         Map<String, String> mobileEmulation = new HashMap<>();
@@ -29,7 +30,6 @@ public class TestBase {
 
         Configuration.browser = "Chrome";
         Configuration.browserCapabilities = options;
-        Configuration.driverManagerEnabled = true;
         Configuration.holdBrowserOpen = true;
         open(ConfigurationManager.configuration().url());
     }

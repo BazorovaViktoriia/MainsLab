@@ -1,9 +1,8 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.*;
@@ -12,11 +11,11 @@ import static java.lang.Thread.sleep;
 
 public class Registration_step_3_Page {
 
-    private TextInput passportSeries = new TextInput($(By.name("passport_s")));
-    private TextInput passportNumber = new TextInput($(By.name("passport_n")));
-    private TextInput passportCode = new TextInput($(By.name("passport_code")));
-    private TextInput passportDate = new TextInput($(By.name("passport_date")));
-    private Button nextBTN = new Button($(byText("Продолжить")));
+    private final SelenideElement passportSeries = $(By.name("passport_s"));
+    private final SelenideElement passportNumber = $(By.name("passport_n"));
+    private final SelenideElement passportCode = $(By.name("passport_code"));
+    private final SelenideElement passportDate = $(By.name("passport_date"));
+    private final SelenideElement nextBTN = $(byText("Продолжить"));
 
 
     public Registration_step_3_Page writePassportSeries(String passportSeriesStr) {
