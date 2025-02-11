@@ -46,4 +46,8 @@ public class PersonalInfoPage {
     public boolean isValidName() {
         return !name.getAttribute("class").contains("error");
     }
+
+    public boolean isValidTel() {
+        return !tel.getAttribute("class").contains("error");
+    }
 }

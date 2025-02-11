@@ -44,6 +44,16 @@ public class DeliveryTest extends PersonalInfo {
 
         boolean actual = personalInfoPage.isValidName();
 
-        Assert.assertEquals(actual, expected, "Ошибка в проверке имени: " + clientName);
+        Assert.assertEquals(actual, expected, "Ошибка в имени: имя " + clientName + " не прошло валидацию");
+    }
+
+    @Test(dataProvider = "telData")
+    public void testTelephoneValidation(String clientTel, boolean expected) {
+        PersonalInfoPage personalInfoPage = new PersonalInfoPage();
+        personalInfoPage.writeTel(clientTel);
+
+        boolean actual = personalInfoPage.isValidName();
+
+        Assert.assertEquals(actual, expected, "Ошибка в формате телефонного номера: введено " + clientTel);
     }
 }

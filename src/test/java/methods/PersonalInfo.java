@@ -32,4 +32,17 @@ public class PersonalInfo extends TestBase {
                 {"ПрвоеркаНаВводДлинногоИмени", false}
         };
     }
+
+    @DataProvider(name = "telData")
+    public Object[][] provideTel() {
+        return new Object[][]{
+                {"89198889911", true},
+                {"+79198889911", true},
+                {"", false},
+                {" ", false},
+                {"@%;?", false},
+                {"A", false},
+                {"33333333333333333333333333333333", false}
+        };
+    }
 }
