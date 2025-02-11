@@ -23,6 +23,8 @@ public class PersonalAddressPage {
     private final SelenideElement agreeBtn = $(byText("Ок"));
     private final SelenideElement cancelBtn = $(byText("Отмена"));
 
+    private final SelenideElement firstPageBtn = $(byText("1"));
+
     @Step("Ставим курсор в поле выбора даты")
     public PersonalAddressPage dateClick() {
         deliveryDate.click();
@@ -73,5 +75,10 @@ public class PersonalAddressPage {
     @Step("Нажимаем кнопку Отмена")
     public void clickCancelBtn() {
         cancelBtn.click();
+    }
+
+    @Step("Возвращаемся на предыдущую страницу")
+    public void clickPrevPage() {
+        firstPageBtn.click();
     }
 }

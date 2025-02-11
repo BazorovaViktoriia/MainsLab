@@ -13,4 +13,10 @@ public class PersonalAddress extends TestBase {
                 .sendPersonalInfo()
                 .clickAgreeBtn();
     }
+
+    public void fillDateDelivery() {
+        new PersonalAddressPage()
+                .dateClick()
+                .checkDate();
+    }
 }

@@ -6,6 +6,7 @@ import methods.PersonalAddress;
 import methods.PersonalInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.PersonalAddressPage;
 import pages.PersonalInfoPage;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -37,6 +38,20 @@ public class DeliveryTest extends PersonalInfo {
 
     }
 
+    @Owner("Базорова Виктория")
+    @Description("Проверка возвращения на страницу ввода перс данных после ввода даты доставки")
+    @Test
+    public void checkPrevBtnTest() {
+        new PersonalInfo().writePersonalInfo();
+        new PersonalAddress().fillDateDelivery();
+        new PersonalAddressPage().clickPrevPage();
+
+        Assert.assertTrue($(byText("Доставка одежды")).exists(),
+                "Не произошло возвращение на первую страницу");
+
+    }
+
+    @Description("Проверка валидации поля 'Имя'")
     @Test(dataProvider = "nameData")
     public void testNameValidation(String clientName, boolean expected) {
         PersonalInfoPage personalInfoPage = new PersonalInfoPage();
@@ -47,12 +62,13 @@ public class DeliveryTest extends PersonalInfo {
         Assert.assertEquals(actual, expected, "Ошибка в имени: имя " + clientName + " не прошло валидацию");
     }
 
+    @Description("Проверка валидации поля 'Телефон'")
     @Test(dataProvider = "telData")
     public void testTelephoneValidation(String clientTel, boolean expected) {
         PersonalInfoPage personalInfoPage = new PersonalInfoPage();
         personalInfoPage.writeTel(clientTel);
 
-        boolean actual = personalInfoPage.isValidName();
+        boolean actual = personalInfoPage.isValidTel();
 
         Assert.assertEquals(actual, expected, "Ошибка в формате телефонного номера: введено " + clientTel);
     }

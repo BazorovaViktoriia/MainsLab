@@ -1,18 +1,19 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PersonalInfoPage {
-    private final SelenideElement name =  $(byId("name"));
-    private final SelenideElement tel =  $(byId("phone"));
-    private final SelenideElement address =  $(byId("address"));
+    private final SelenideElement name = $(byId("name"));
+    private final SelenideElement tel = $(byId("phone"));
+    private final SelenideElement address = $(byId("address"));
     private final SelenideElement saveBtn = $(byText("Сохранить"));
     private final SelenideElement secondPageBtn = $(byText("2"));
+
 
     @Step("Вводим имя Клиента")
     public PersonalInfoPage writeName(String clientName) {
@@ -31,6 +32,7 @@ public class PersonalInfoPage {
         address.sendKeys(clientAddress);
         return this;
     }
+
     @Step("Нажимаем кнопку 'Сохранить' ")
     public PersonalInfoPage clickSaveBTN() {
         saveBtn.click();
@@ -39,9 +41,9 @@ public class PersonalInfoPage {
 
     @Step("Перходим на следующую страницу")
     public void clickNextPage() {
-        System.out.println("Кликаем кнопку");
         secondPageBtn.click();
     }
+
 
     public boolean isValidName() {
         return !name.getAttribute("class").contains("error");
@@ -50,4 +52,6 @@ public class PersonalInfoPage {
     public boolean isValidTel() {
         return !tel.getAttribute("class").contains("error");
     }
+
+
 }
