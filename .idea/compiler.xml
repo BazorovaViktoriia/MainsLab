@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Estelink_autotests" />
         <module name="Microklad" />
+        <module name="MainsLab" />
         <module name="Estelink_" />
       </profile>
     </annotationProcessing>
