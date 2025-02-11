@@ -1,6 +1,7 @@
 package methods;
 
 import base.TestBase;
+import org.testng.annotations.DataProvider;
 import pages.PersonalInfoPage;
 import properties.ConfigurationManager;
 
@@ -17,5 +18,18 @@ public class PersonalInfo extends TestBase {
                 .writeAddress(address)
                 .clickSaveBTN()
                 .clickNextPage();
+    }
+
+    @DataProvider(name = "nameData")
+    public Object[][] provideNames() {
+        return new Object[][]{
+                {"Иван", true},
+                {"Jane", true},
+                {"", false},
+                {" ", false},
+                {"@%;?", false},
+                {"A", false},
+                {"ПрвоеркаНаВводДлинногоИмени", false}
+        };
     }
 }

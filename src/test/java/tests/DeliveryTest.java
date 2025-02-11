@@ -6,6 +6,7 @@ import methods.PersonalAddress;
 import methods.PersonalInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.PersonalInfoPage;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -36,4 +37,13 @@ public class DeliveryTest extends PersonalInfo {
 
     }
 
+    @Test(dataProvider = "nameData")
+    public void testNameValidation(String clientName, boolean expected) {
+        PersonalInfoPage personalInfoPage = new PersonalInfoPage();
+        personalInfoPage.writeName(clientName);
+
+        boolean actual = personalInfoPage.isValidName();
+
+        Assert.assertEquals(actual, expected, "Ошибка в проверке имени: " + clientName);
+    }
 }

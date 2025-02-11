@@ -43,5 +43,7 @@ public class PersonalInfoPage {
         secondPageBtn.click();
     }
 
-
+    public boolean isValidName() {
+        return !name.getAttribute("class").contains("error");
+    }
 }
